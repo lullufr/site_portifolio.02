@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luisa Ferreira — The Infinite Mind</title>
+  <meta name="description" content="Portfólio de Luisa Ferreira, estudante de Engenharia de Software com foco em Inteligência Artificial, matemática e tecnologia acessível." />
+  <meta name="theme-color" content="#FBF3DC" />
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+
+  <!-- Aplica o tema antes da primeira pintura (evita "piscar" claro → escuro).
+       Usa a escolha salva e, na primeira visita, a preferência do sistema. -->
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      var theme = null;
+      try {
+        var saved = localStorage.getItem('lulu-portfolio-theme');
+        if (saved === 'dark' || saved === 'light') theme = saved;
+      } catch (e) { /* armazenamento indisponível */ }
+      if (!theme) {
+        theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      root.dataset.theme = theme;
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', theme === 'dark' ? '#201f1b' : '#FBF3DC');
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Karla:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./src/style.css" />
+  <script src="./js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Ir para o conteúdo</a>
+
+  <!-- NAVBAR -->
+  <header class="nav" id="nav">
+    <a class="brand" href="#inicio" aria-label="Luisa Ferreira — voltar ao início">
+      <svg viewBox="0 0 400 200" width="34" height="17" aria-hidden="true"><path class="inf-line" d="M200 100C250 30 380 30 380 100C380 170 250 170 200 100C150 30 20 30 20 100C20 170 150 170 200 100Z" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/></svg>
+      <span>Luisa Ferreira</span>
+    </a>
+
+    <nav class="nav-menu" id="navMenu" aria-label="Principal">
+      <ul class="nav-links">
+        <li><a class="nav-link" href="#inicio">Início</a></li>
+
+        <li class="has-dropdown">
+          <button class="nav-trigger" type="button" id="triggerProfissional" aria-expanded="false" aria-controls="menuProfissional">
+            Profissional
+            <svg class="chevron" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2 4.5 6 8.5 10 4.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="dropdown" id="menuProfissional">
+            <li><a href="#trajetoria">Minha trajetória</a></li>
+            <li><a href="#universo">Universo tecnológico</a></li>
+            <li><a href="#laboratorio">Fabrica de ideias</a></li>
+            <li><a href="#projetos">Estudos de caso</a></li>
+            <li><a href="#beyond">Além do código</a></li>
+          </ul>
+        </li>
+
+        <li class="has-dropdown">
+          <button class="nav-trigger" type="button" id="triggerPessoal" aria-expanded="false" aria-controls="menuPessoal">
+            Pessoal
+            <svg class="chevron" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2 4.5 6 8.5 10 4.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="dropdown" id="menuPessoal">
+            <li><a href="#hobbies">Hobbies</a></li>
+            <li><a href="#soft-skills">Soft Skills</a></li>
+            <li><a href="#resumo">Resumo sobre mim</a></li>
+          </ul>
+        </li>
+
+        <li><a class="nav-link" href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Ativar modo escuro" title="Alternar tema claro/escuro">
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></g></svg>
+      </button>
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Abrir menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="conteudo" tabindex="-1">
+    <!-- INÍCIO -->
+    <section id="inicio" class="hero">
+      <svg class="hero-inf" id="heroInf" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+        <path id="infPath" class="inf-draw" d="M200 100C250 30 380 30 380 100C380 170 250 170 200 100C150 30 20 30 20 100C20 170 150 170 200 100Z" fill="none" stroke="currentColor" stroke-linecap="round"/>
+        <circle id="infDot" r="2.6" fill="currentColor">
+          <animateMotion dur="14s" repeatCount="indefinite" rotate="0"><mpath href="#infPath"/></animateMotion>
+        </circle>
+      </svg>
+      <div class="hero-text">
+        <!-- Saudação personalizada: complementa o hero, sem substituir o meu nome -->
+        <div class="greeting" id="greeting">
+          <p class="greeting-hello" id="greetingHello">Olá! Seja bem-vindo.</p>
+          <p class="greeting-sub" id="greetingSub" hidden></p>
+          <button class="greeting-edit" id="greetingEdit" type="button">Informar meu nome</button>
+        </div>
+        <p class="kicker">Engenharia de Software · rumo à Inteligência Artificial</p>
+        <h1>Luisa Ferreira</h1>
+        <p class="lead">Penso em infinitos para construir tecnologia que cabe a todas as pessoas.</p>
+        <div class="hero-cta">
+          <a class="btn btn-solid" href="#projetos">Ver projetos</a>
+          <a class="btn btn-ghost" href="#contato">Entrar em contato</a>
+        </div>
+      </div>
+      <figure class="hero-photo">
+        <img src="img/euu.jpg" alt= width="400" height="500" />
+      </figure>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="section about">
+      <h2>Sobre mim</h2>
+      <div class="about-body">
+        <p>Oiiee, eu sou a Luisa. Estudo Engenharia de Software e quero dedicar minha carreira à Inteligência Artificial.</p>
+        <p>A matemática é o que mais me encanta, gosto de me desafiar, de ver como padrões e provas se transformam em ferramentas que resolvem problemas reais. É por isso que o infinito virou meu símbolo, uma ideia que nunca termina de ser explorada.</p>
+        <p>Quero criar tecnologia que seja acessível desde o primeiro rascunho, e não um ajuste feito no fim.</p>
+        <p>Estou construindo minha base em programação, banco de dados e desenvolvimento web, enquanto exploro como a inteligência artificial pode ampliar o acesso ao conhecimento.</p>
+        <p class="about-signature">Entre lógica, curiosidade e propósito, sigo aprendendo — uma linha de código de cada vez.</p>
+      </div>
+    </section>
+
+    <!-- PROFISSIONAL · MINHA TRAJETÓRIA -->
+    <section id="trajetoria" class="section timeline-section">
+      <p class="eyebrow">O caminho também faz parte da construção</p>
+      <h2>Minha trajetória</h2>
+      <p class="section-intro">Cada etapa acrescenta uma nova perspectiva ao que quero construir.</p>
+      <ol class="timeline">
+        <li class="timeline-item">
+          <span class="timeline-date">2025</span>
+          <div><h3>Conclusão do Ensino Médio</h3><p>Encerramento de um ciclo e início da preparação para seguir na área de tecnologia.</p></div>
+        </li>
+        <li class="timeline-item current">
+          <span class="timeline-date">2026</span>
+          <div><h3>Início da Engenharia de Software</h3><p>Começo da graduação e aprofundamento em lógica, programação, banco de dados e desenvolvimento de software.</p></div>
+        </li>
+        <li class="timeline-item future">
+          <span class="timeline-date">Próximos passos</span>
+          <div><h3>Construir, pesquisar e compartilhar</h3><p>Desenvolver projetos, fortalecer minha base técnica e explorar aplicações de IA mais acessíveis e sustentáveis.</p></div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- PROFISSIONAL · UNIVERSO TECNOLÓGICO -->
+    <section id="universo" class="section skills-section">
+      <p class="eyebrow">Ferramentas para transformar ideias em soluções</p>
+      <h2>Meu universo tecnológico</h2>
+      <p class="section-intro">Uma visão honesta do que estou estudando e das áreas que quero explorar.</p>
+      <div class="skills-grid">
+        <article class="skill-card"><span class="skill-symbol" aria-hidden="true">&lt;/&gt;</span><h3>Desenvolvimento</h3><p>HTML · CSS · C · JavaScript </p><span class="skill-status">Em aprendizado</span></article>
+        <article class="skill-card"><span class="skill-symbol" aria-hidden="true">⌘</span><h3>Dados</h3><p>SQL · MySQL · Modelagem relacional</p><span class="skill-status">Em aprendizado</span></article>
+        <article class="skill-card"><span class="skill-symbol" aria-hidden="true">⑂</span><h3>Versionamento</h3><p>Git · GitHub</p><span class="skill-status">Em aprendizado</span></article>
+        <article class="skill-card"><span class="skill-symbol" aria-hidden="true">∞</span><h3>Exploração</h3><p>Inteligência Artificial · Acessibilidade · Sustentabilidade</p><span class="skill-status">Área de interesse</span></article>
+      </div>
+      <p class="skills-note">As habilidades evoluem com a prática. Esta seção será atualizada conforme novos conhecimentos e projetos forem incorporados.</p>
+    </section>
+
+    <!-- PROFISSIONAL · LABORATÓRIO DE IDEIAS -->
+    <section id="laboratorio" class="section lab-section">
+      <p class="eyebrow">Perguntas que merecem ser exploradas</p>
+      <h2>Fabrica de ideias</h2>
+      <p class="section-intro">Um espaço para pesquisas, hipóteses e experimentos que podem se transformar em projetos.</p>
+      <div class="lab-list">
+        <article class="lab-item"><span>01</span><div><h3>Data centers e eficiência</h3><p>Como reduzir consumo de energia e recursos sem perder eficiência de processamento?</p></div><span class="lab-mark" aria-hidden="true">↗</span></article>
+        <article class="lab-item"><span>02</span><div><h3>Reutilização de hardware</h3><p>Quais caminhos prolongam a vida útil de equipamentos e fortalecem a economia circular?</p></div><span class="lab-mark" aria-hidden="true">↗</span></article>
+        <article class="lab-item"><span>03</span><div><h3>IA acessível</h3><p>Como projetar experiências úteis para pessoas com diferentes habilidades, dispositivos e conexões?</p></div><span class="lab-mark" aria-hidden="true">↗</span></article>
+        <article class="lab-item"><span>04</span><div><h3>Software consciente</h3><p>Como decisões de código, arquitetura e interface podem contribuir para sistemas mais leves?</p></div><span class="lab-mark" aria-hidden="true">↗</span></article>
+      </div>
+      <article class="lab-item"><span>05</span><div><h3>Software Contra bet</h3><p>Como produzir software que proiba pessoas vicias em bet de ter acesso a propagandas e plataformas de jogos ilegais?</p></div><span class="lab-mark" aria-hidden="true">↗</span></article>
+      </div>
+    </section>
+
+    <!-- PROFISSIONAL · ESTUDOS DE CASO -->
+    <section id="projetos" class="section case-section">
+      <p class="eyebrow">Aprender fazendo</p>
+      <h2>Projetos &amp; estudos de caso</h2>
+      <p class="section-intro">Mais do que mostrar o resultado, quero registrar o problema, as decisões e os aprendizados por trás de cada construção.</p>
+      <div class="case-grid">
+
+        <article class="case-card featured-case">
+          <span class="case-number">01 / PROPOSTA</span><span class="case-type">Pesquisa e concepção</span>
+          <h3>Ferramenta de IA: uma proposta em construção</h3>
+          <p>Uma iniciativa de pesquisa para pensar em ferramentas de inteligência artificial considerando acessibilidade, inclusão e impacto no uso cotidiano.</p>
+          <div class="case-tags"><span>IA</span><span>Acessibilidade</span><span>Pesquisa</span></div>
+          <button class="case-toggle" type="button" aria-expanded="false" aria-controls="case-1-details"><span class="case-toggle-label">Ver estudo de caso</span><span class="case-toggle-icon" aria-hidden="true"></span></button>
+          <div class="case-more" id="case-1-details"><div class="case-more-inner">
+            <dl class="case-details">
+              <div><dt>Problema</dt><dd>Como aproximar recursos de IA de pessoas com diferentes necessidades e condições de acesso?</dd></div>
+              <div><dt>Contexto</dt><dd>Iniciativa de pesquisa e concepção que considera acessibilidade, inclusão e o impacto no uso cotidiano.</dd></div>
+              <div><dt>Objetivo</dt><dd class="case-1-details">Levar tecnologia a todos, independente de classe sociais.</dd></div>
+              <div><dt>Processo</dt><dd>Levantamento de referências, definição de objetivos e reflexão sobre acessibilidade e sustentabilidade.</dd></div>
+              <div><dt>Tecnologias</dt><dd class="case-1-details">Software leves </dd></div>
+              <div><dt>Resultados e aprendizados</dt><dd>Uma boa solução começa pela compreensão das pessoas e do contexto.</dd></div>
+            </dl>
+          </div></div>
+        </article>
+
+        <article class="case-card">
+          <span class="case-number">02 / PESQUISA</span><span class="case-type">Tecnologia responsável</span>
+          <h3>O ciclo de vida do hardware</h3>
+          <p>Investigação sobre o destino de computadores e equipamentos que deixam de atender às necessidades de data centers.</p>
+          <div class="case-tags"><span>Data centers</span><span>Hardware</span><span>Economia circular</span></div>
+          <button class="case-toggle" type="button" aria-expanded="false" aria-controls="case-2-details"><span class="case-toggle-label">Ver estudo de caso</span><span class="case-toggle-icon" aria-hidden="true"></span></button>
+          <div class="case-more" id="case-2-details"><div class="case-more-inner">
+            <dl class="case-details">
+              <div><dt>Problema</dt><dd>O que acontece com os equipamentos retirados de operação?</dd></div>
+              <div><dt>Contexto</dt><dd>Investigação sobre o destino de computadores e equipamentos que deixam de atender às necessidades de data centers.</dd></div>
+              <div><dt>Objetivo</dt><dd>Entender caminhos de reutilização, reciclagem, logística reversa e retorno ao mercado.</dd></div>
+              <div><dt>Processo</dt><dd>Próximo passo: organizar informações obtidas com profissionais da área.</dd></div>
+              <div><dt>Tecnologias</dt><dd class="case-1-details">App de controle de quantos hardware perderam utilidade para data centers e colocar os hardware em um processo </dd></div>
+              <div><dt>Resultados e aprendizados</dt><dd class="case-1-details">É necessario uma empresa de data center esta disposta a participar do projeto</dd></div>
+            </dl>
+          </div></div>
+        </article>
+
+        <article class="case-card">
+          <span class="case-number">03 / ESTUDO</span><span class="case-type">Acesso digital</span>
+          <h3>IA para diferentes realidades</h3>
+          <p>Estudo de princípios de acessibilidade digital e de como considerar conexões lentas, dispositivos antigos e diferentes formas de interação.</p>
+          <div class="case-tags"><span>WCAG</span><span>eMAG</span><span>Design inclusivo</span></div>
+          <button class="case-toggle" type="button" aria-expanded="false" aria-controls="case-3-details"><span class="case-toggle-label">Ver estudo de caso</span><span class="case-toggle-icon" aria-hidden="true"></span></button>
+          <div class="case-more" id="case-3-details"><div class="case-more-inner">
+            <dl class="case-details">
+              <div><dt>Problema</dt><dd>Como evitar que uma ferramenta inteligente se torne inacessível justamente para quem poderia se beneficiar dela?</dd></div>
+              <div><dt>Contexto</dt><dd>Estudo de princípios de acessibilidade digital e de como considerar conexões lentas, dispositivos antigos e diferentes formas de interação.</dd></div>
+              <div><dt>Objetivo</dt><dd class="is-placeholder"> Levar IA para pessoas idosas que costumam ter aparelhos menos tecnologico.</dd></div>
+              <div><dt>Processo</dt><dd>Estudo das referências WCAG e eMAG.</dd></div>
+              <div><dt>Tecnologias</dt><dd class="is-placeholder">Ia</dd></div>
+              <div><dt>Resultados e aprendizados</dt><dd>Direção: pensar em interfaces claras, leves e inclusivas desde o planejamento.</dd></div>
+            </dl>
+          </div></div>
+        </article>
+
+        <article class="case-card">
+          <span class="case-number">04 / Software de Controle</span><span class="case-type">Pesquisa software</span>
+          <h3>Software contra bet</h3>
+          <p>Um software em que leve bloqueia anuncios de bet para pessoas viciadas em tal.</p>
+          <div class="case-tags"><span>Pesquisa</span><span>Software</span><span>Projeto futuro</span></div>
+          <button class="case-toggle" type="button" aria-expanded="false" aria-controls="case-4-details"><span class="case-toggle-label">Ver estudo de caso</span><span class="case-toggle-icon" aria-hidden="true"></span></button>
+          <div class="case-more" id="case-4-details"><div class="case-more-inner">
+            <dl class="case-details">
+              <div><dt>Problema</dt><dd class="case-1-details">Vicio em casas de apostas e falsa ilusão de conquista.</dd></div>
+              <div><dt>Contexto</dt><dd class="case-1-details"> O software esta sendo pensado para essas pessoas não se individarem.</dd></div>
+              <div><dt>Objetivo</dt><dd class="case-1-details">Redução do vicio em casa de apostas no Brasil</dd></div>
+              <div><dt>Processo</dt><dd class="case-1-details">ainda em pesquisa, projeto futuro altoral meu</dd></div>
+              <div><dt>Tecnologias</dt><dd class="case-1-details">Em pesquisa...</dd></div>
+              <div><dt>Resultados e aprendizados</dt><dd class="case-1-details">Interessados na proposta entre em contato.</dd></div>
+            </dl>
+          </div></div>
+        </article>
+
+      </div>
+      <p class="case-disclaimer">Os itens apresentados como pesquisa ou proposta não representam produtos finalizados. O objetivo é documentar ideias, perguntas e aprendizados em andamento.</p>
+    </section>
+
+    <!-- PROFISSIONAL · BEYOND THE CODE -->
+    <section id="beyond" class="section beyond-section">
+      <p class="eyebrow">Além do codigo</p>
+      <h2>A tecnologia não termina no código.</h2>
+      <p class="beyond-lead">O que me interessa é o que podemos transformar com ela — e quem consegue participar dessa transformação.</p>
+      <div class="beyond-grid">
+        <article><span class="beyond-icon" aria-hidden="true">∑</span><h3>Matemática</h3><p>Enxergar padrões, investigar possibilidades e entender a lógica por trás das soluções.</p></article>
+        <article><span class="beyond-icon" aria-hidden="true">✳</span><h3>Inclusão</h3><p>Considerar diferentes pessoas, formas de comunicação e realidades desde o início.</p></article>
+        <article><span class="beyond-icon" aria-hidden="true">∞</span><h3>Curiosidade</h3><p>Fazer perguntas, testar ideias e manter o aprendizado em movimento.</p></article>
+        <article><span class="beyond-icon" aria-hidden="true">♧</span><h3>Sustentabilidade</h3><p>Construir com consciência sobre energia, materiais e impactos no mundo real.</p></article>
+      </div>
+    </section>
+
+    <!-- TERMINAL INTERATIVO -->
+    <section id="terminal" class="section terminal-section">
+      <div class="terminal-heading"><div><p class="eyebrow">Uma pequena experiência</p><h2>Conheça pelo terminal</h2><p class="section-intro">Digite um comando ou escolha uma das sugestões para explorar o portfólio de outro jeito.</p></div><span class="terminal-stamp" aria-hidden="true">LF.exe</span></div>
+      <div class="terminal-window">
+        <div class="terminal-bar" aria-hidden="true"><span></span><span></span><span></span><p>luisa@infinite-mind: ~</p></div>
+        <div class="terminal-screen" id="terminalScreen" aria-live="polite"><p class="terminal-output">Bem-vinda(o)! Este é um terminal interativo de apresentação. Digite <strong>help</strong> para ver os comandos disponíveis.</p></div>
+        <form class="terminal-form" id="terminalForm"><label for="terminalInput">luisa@infinite-mind:~$</label><input id="terminalInput" name="command" type="text" autocomplete="off" spellcheck="false" placeholder="digite help" aria-label="Digite um comando"><button type="submit" aria-label="Executar comando">↵</button></form>
+      </div>
+      <div class="terminal-suggestions"><button type="button" data-command="about">about</button><button type="button" data-command="skills">skills</button><button type="button" data-command="projects">projects</button><button type="button" data-command="contact">contact</button><button type="button" data-command="clear">clear</button></div>
+    </section>
+
+    <!-- PESSOAL · HOBBIES -->
+    <section id="hobbies" class="section hobbies-section">
+      <p class="eyebrow">Além da tela</p>
+      <h2>Hobbies</h2>
+      <p class="section-intro">Os interesses que me inspiram e que, de um jeito ou de outro, acabam entrando no que eu construo.</p>
+      <div class="hobby-grid">
+        <article class="hobby-card"><span class="hobby-symbol" aria-hidden="true">∑</span><h3>Matemática</h3><p>Encontrar padrões, resolver problemas e entender por que as coisas funcionam.</p></article>
+        <article class="hobby-card"><span class="hobby-symbol" aria-hidden="true">&lt;/&gt;</span><h3>Explorar tecnologia</h3><p>Estudar e experimentar ideias de software, IA, acessibilidade e sustentabilidade.</p></article>
+        <article class="hobby-card"><span class="hobby-symbol" aria-hidden="true">&#9860;</span><h3>RPG</h3><p>Gosto de fazer personagens totalmente diferentes de mim e me jogar, calcular a probabilidade dos dados e me dirvito muito</p></article>
+        <article class="hobby-card"><span class="hobby-symbol" aria-hidden="true"> &#9827;</span><h3>Esporte</h3><p>Sou apaixonada por esportes também, patinação, natação, basquete, dança, trilhas, musculação, isso mostra minha determinação e persistência.</p></article>
+      </div>
+
+      <!-- carrousel aqui oh -->
+      <div class="carousel" id="hobbyCarousel" role="region" aria-roledescription="carrossel" aria-label="Fotos dos meus hobbies">
+      <div class="carousel-head">
+    <p class="carousel-title">Momentos que me inspiram</p>
+    <div class="carousel-controls">
+      <button type="button" class="carousel-btn" data-dir="-1" aria-label="Foto anterior">←</button>
+      <button type="button" class="carousel-btn" data-dir="1" aria-label="Próxima foto">→</button>
+    </div>
+  </div>
+  <div class="carousel-track" tabindex="0" aria-label="Lista de fotos, role para o lado">
+    <!-- Para usar sua foto: troque o <div class="carousel-ph"> por
+         <img src="./assets/hobby-1.jpg" alt="Descreva a foto" loading="lazy" /> -->
+    <figure class="carousel-slide">
+      <img src="img/tchurma.jpg" aria-hidden="true">
+      <figcaption>Final da trilha de 27 KM</figcaption>
+    </figure>
+    <figure class="carousel-slide">
+      <img src="img/25km.jpg" aria-hidden="true">
+      <figcaption>Registro da trilha</figcaption>
+    </figure>
+    <figure class="carousel-slide">
+      <img src="img/patins.jpg" aria-hidden="true">
+      <figcaption>Patins</figcaption>
+    </figure>
+     <figure class="carousel-slide">
+      <img src="img/introsa.jpg" aria-hidden="true">
+      <figcaption>O pontinho rosa no meio dos boys</figcaption>
+    </figure>
+    <figure class="carousel-slide">
+      <img src="img/12.jpg" aria-hidden="true">
+      <figcaption>Campeonato de basquete que meu time ganhou</figcaption>
+    </figure>
+  </div>
+</div>
+    </section>
+
+    <!-- PESSOAL · SOFT SKILLS -->
+    <section id="soft-skills" class="section soft-section">
+      <p class="eyebrow">O lado humano da tecnologia</p>
+      <h2>Soft Skills</h2>
+      <p class="section-intro">Habilidades que sustentam o trabalho técnico e fazem a diferença na hora de construir junto.</p>
+      <ul class="soft-grid">
+        <li class="soft-item"><h3>Comunicação</h3><p>Explicar ideias com clareza e ouvir com atenção, seja em código, em texto ou numa conversa.</p></li>
+        <li class="soft-item"><h3>Criatividade</h3><p>Buscar caminhos novos para problemas conhecidos, unindo lógica e imaginação.</p></li>
+        <li class="soft-item"><h3>Capacidade de aprendizagem</h3><p>Ter curiosidade para estudar o que ainda não sei e usar cada erro como ponto de partida.</p></li>
+        <li class="soft-item"><h3>Colaboração</h3><p>Construir junto: compartilhar ideias, receber feedback e valorizar perspectivas diferentes.</p></li>
+        <li class="soft-item"><h3>Pensamento crítico</h3><p>Questionar premissas, analisar evidências e decidir com base em bons argumentos.</p></li>
+        <li class="soft-item"><h3>Empatia</h3><p>Sempre penso no proximo mesmo que não me favoreça.</p></li>
+      </ul>
+    </section>
+
+    <!-- PESSOAL · RESUMO SOBRE MIM -->
+    <section id="resumo" class="section resume-section">
+      <p class="eyebrow">Prazer, Luisa</p>
+      <h2>Resumo sobre mim</h2>
+      <div class="resume-card">
+        <p class="resume-text">Sou estudante de Engenharia de Software e apaixonada por matemática. Gosto de transformar curiosidade em construção: aprendo programação, bancos de dados e desenvolvimento web com um objetivo claro, seguir carreira em Inteligência Artificial e criar tecnologia que seja acessível e sustentável.</p>
+        <dl class="resume-facts">
+          <div><dt>Hoje</dt><dd>Construindo minha base em programação, banco de dados e desenvolvimento web.</dd></div>
+          <div><dt>O que me move</dt><dd>Matemática, acessibilidade, sustentabilidade e ajudar sem olhar a quem.</dd></div>
+          <div><dt>Amanhã</dt><dd>Uma carreira em Inteligência Artificial, com tecnologia que cabe a todas as pessoas.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- OBJETIVOS -->
+    <section id="objetivos" class="section goals">
+      <h2>Objetivos</h2>
+      <div class="goal goal-main">
+        <h3>Inteligência Artificial</h3>
+        <p>Meu foco de carreira. Quero entender os modelos por dentro, com a matemática por trás, e usá-los para criar soluções que façam diferença na vida das pessoas.</p>
+      </div>
+      <div class="goal">
+        <h3>Acessibilidade</h3>
+        <p>Construir produtos que funcionem para todas as pessoas, com diferentes habilidades, dispositivos e contextos.</p>
+      </div>
+      <div class="goal">
+        <h3>Sustentabilidade</h3>
+        <p>Escrever software eficiente e consciente do seu impacto, pensando no uso responsável de recursos.</p>
+      </div>
+    </section>
+
+    <!-- PRINCÍPIOS -->
+    <section id="principios" class="section principles">
+      <h2 class="sr-only">Princípios</h2>
+      <blockquote>
+        <p>Ajude sem olhar a quem.</p>
+      </blockquote>
+      <p class="principles-note">É o princípio que guia como estudo, como construo e como me relaciono com as pessoas.</p>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" class="section contact">
+      <h2>Contato</h2>
+      <p class="section-intro">Vamos conversar sobre tecnologia, matemática ou projetos?</p>
+      <p class="contact-open"><span class="status-dot" aria-hidden="true"></span> Aberta a conexões, projetos colaborativos e oportunidades de aprendizado.</p>
+      <ul class="social">
+        <li><a href="https://github.com/lullufr" target="_blank" rel="noopener noreferrer" aria-label="GitHub (abre em nova aba)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.800-.3 5.500-1.400 5.500-6a4.600 4.600 0 0 0-1.300-3.200 4.200 4.200 0 0 0-.1-3.200s-1.100-.3-3.500 1.300a12.300 12.300 0 0 0-6.200 0C6.500 2.800 5.400 3.100 5.400 3.100a4.200 4.200 0 0 0-.1 3.200A4.600 4.600 0 0 0 4 9.500c0 4.600 2.700 5.700 5.500 6-.6.600-.6 1.200-.5 2V21"/></svg>
+          <span>GitHub</span></a></li>
+        <li><a href="https://www.linkedin.com/in/luisa-ferreira-4343293aa/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (abre em nova aba)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></g></svg>
+          <span>LinkedIn</span></a></li>
+        <li><a href="https://www.instagram.com/lullu.fr/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (abre em nova aba)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.500" cy="6.500" r=".6"/></g></svg>
+          <span>Instagram</span></a></li>
+        <li><a href="mailto:luisafveloso@gmail.com" aria-label="Enviar e-mail">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></g></svg>
+          <span>E-mail</span></a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <svg viewBox="0 0 400 200" width="44" height="22" aria-hidden="true"><path d="M200 100C250 30 380 30 380 100C380 170 250 170 200 100C150 30 20 30 20 100C20 170 150 170 200 100Z" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg>
+    <p>© <span id="year">2026</span> Luisa Ferreira · The Infinite Mind</p>
+  </footer>
+
+  <!-- BATERIA DE PROGRESSO: detalhe de interface, fixo e centralizado na base -->
+  <div class="battery" id="battery" role="progressbar" aria-label="Progresso de leitura da página" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0% da página percorrida">
+    <span class="battery-cell" aria-hidden="true"><span class="battery-body"><span class="battery-fill"></span></span><span class="battery-tip"></span></span>
+    <span class="battery-label" id="batteryLabel" aria-hidden="true">0%</span>
+  </div>
+
+  <!-- BOAS-VINDAS -->
+  <dialog class="welcome" id="welcome" aria-labelledby="welcomeTitle" aria-describedby="welcomeText">
+    <form class="welcome-card" id="welcomeForm" novalidate>
+      <svg class="welcome-inf" viewBox="0 0 400 200" aria-hidden="true"><path d="M200 100C250 30 380 30 380 100C380 170 250 170 200 100C150 30 20 30 20 100C20 170 150 170 200 100Z" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>
+      <h2 id="welcomeTitle">Antes de começarmos...</h2>
+      <p id="welcomeText">Que tal nos apresentarmos primeiro? Como posso te chamar?</p>
+      <label class="sr-only" for="visitorName">Seu nome</label>
+      <input id="visitorName" name="name" type="text" placeholder="Digite seu nome" autocomplete="given-name" maxlength="30" aria-describedby="welcomeError" />
+      <p class="welcome-error" id="welcomeError" role="alert"></p>
+      <button class="btn btn-solid welcome-submit" id="welcomeSubmit" type="submit">Vamos começar</button>
+      <button class="welcome-skip" id="welcomeSkip" type="button">Prefiro continuar sem informar meu nome</button>
+    </form>
+  </dialog>
+</body>
+</html>
